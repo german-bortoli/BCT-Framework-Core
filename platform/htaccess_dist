@@ -1,0 +1,21 @@
+<Files "htaccess_dist">
+    order allow,deny
+    deny from all
+</Files>
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine on
+
+RewriteRule ^action\/([A-Za-z0-9\_\-\/]+)$ _actions/action_handler.php?action=$1 [L,QSA]
+
+# Entities
+RewriteRule ^object\/([0-9]+)$ _objects/object_handler.php?mode=object&guid=$1 [L,QSA]
+RewriteRule ^object\/([0-9]+)\/$ _objects/object_handler.php?mode=object&guid=$1 [L,QSA]
+RewriteRule ^objects\/(.*)$ _objects/object_handler.php?mode=objects&query=$1 [L,QSA]
+
+# These rules must be last
+RewriteCond %{REQUEST_URI} !/_(.*)$  
+RewriteRule ^(.*)$ _pages/page_handler.php?page=$1 [QSA]
+
+</IfModule>

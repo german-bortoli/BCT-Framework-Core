@@ -1,0 +1,7 @@
+
+The BCT Platform is: (C) Copyright Marcus Povey 2010-11 
+and is released under the MIT Licence (see LICENCE.txt)
+
+The BCT Platform is also available under compatible commercial licences. Please
+contact Marcus Povey <marcus@marcus-povey.co.uk> for details.
+

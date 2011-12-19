@@ -1,0 +1,1 @@
+<div class="message system_message"><?php echo $vars['message']; ?></div>
