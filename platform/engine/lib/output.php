@@ -6,7 +6,7 @@
 	 * @package core
 	 * @license The MIT License (see LICENCE.txt), other licenses available.
 	 * @author Marcus Povey <marcus@marcus-povey.co.uk>
-	 * @copyright Marcus Povey 2009-2011
+	 * @copyright Marcus Povey 2009-2012
 	 * @link http://platform.barcamptransparency.org/
 	 */
 
@@ -202,27 +202,27 @@
 			trigger_hook('view', 'prepend', array('view' => $view, 'vars' => $vars), $content);
 		$content .= ob_get_clean();
 		    
-    	$view_location = get_view_location($view, $viewtype);
+		$view_location = get_view_location($view, $viewtype);
     	
-	    if (
-	    	(file_exists($view_location . "{$viewtype}/{$view}.php")) && 
-	    	(!include($view_location . "{$viewtype}/{$view}.php"))
-	    ) {
-        	if ($viewtype != "default") 
-        	{
-	            if (!include($view_location . "default/{$view}.php")) 
-	            {
-	                if ($CONFIG->debug)
-	                	log_echo("View: $view does not exist", 'DEBUG');
-	            }
-	        }
+		if (
+		    (file_exists($view_location . "{$viewtype}/{$view}.php")) && 
+		    (!include($view_location . "{$viewtype}/{$view}.php"))
+		) {
+		    if ($viewtype != "default") 
+		    {
+			if (!include($view_location . "default/{$view}.php")) 
+			{
+			    if ($CONFIG->debug)
+				    log_echo("View: $view does not exist", 'DEBUG');
+			}
+		    }
 
-	    } 
-	    else if (!file_exists($view_location . "{$viewtype}/{$view}.php")) 
-	    {
-    		if ($CONFIG->debug) 
-	    		log_echo("View: $view_location{$viewtype}/{$view}.php does not exist", 'DEBUG');
-	    }
+		} 
+		else if (!file_exists($view_location . "{$viewtype}/{$view}.php")) 
+		{
+		    if ($CONFIG->debug) 
+			    log_echo("View: $view_location{$viewtype}/{$view}.php does not exist", 'DEBUG');
+		}
 
 		// Save the output buffer into the $content variable
 		$content .= ob_get_clean();
